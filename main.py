@@ -141,3 +141,27 @@ print("\nСередній бал кожного студента:\n")
 averages = calculate_average_grades(students)
 for name, avg in averages.items():
     print(f"{name}: {avg}")
+
+
+    # Автор: Мигаль Яна Іванівна (четверта студентка)
+
+def find_top_students(students, threshold):
+    """
+    Повертає список студентів, у яких середній бал вище заданого порогу.
+    :param students: словник студентів
+    :param threshold: мінімальний середній бал
+    :return: список імен студентів
+    """
+    top_students = []
+    for sid, info in students.items():
+        grades = info["subjects"].values()
+        avg = sum(grades) / len(grades)
+        if avg > threshold:
+            top_students.append(info["name"])
+    return top_students
+
+# Виклик функції пошуку
+print("\nСтуденти з середнім балом вище 90:\n")
+excellent_students = find_top_students(students, 90)
+for name in excellent_students:
+    print(name)
