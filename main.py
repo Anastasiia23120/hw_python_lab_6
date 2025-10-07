@@ -94,5 +94,28 @@ for sid, info in students.items():
         print(f"  {subject}: {grade}")
     print("-" * 30)
 
-# Завдання для наступного студента:
-# Реалізувати функцію сортування студентів за прізвищем.
+# Автор: Пікульов Іван Юрійович (другий студент)
+# Додано функцію для сортування студентів за прізвищем
+
+def sort_students_by_lastname(students):
+    """
+    Повертає словник студентів, відсортований за прізвищем.
+    :param students: словник студентів
+    :return: новий словник у відсортованому порядку
+    """
+    sorted_items = sorted(students.items(), key=lambda item: item[1]["name"].split()[0])
+    return dict(sorted_items)
+
+# Виклик функції сортування та повний вивід результатів
+print("\nСортування студентів за прізвищем:\n")
+sorted_students = sort_students_by_lastname(students)
+
+for sid, info in sorted_students.items():
+    print(f"ID: {sid}")
+    print(f"ПІБ: {info['name']}")
+    print(f"Група: {info['group']}")
+    print(f"Курс: {info['course']}")
+    print("Оцінки:")
+    for subject, grade in info['subjects'].items():
+        print(f"  {subject}: {grade}")
+    print("-" * 30)
