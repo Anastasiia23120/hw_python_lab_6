@@ -119,3 +119,25 @@ for sid, info in sorted_students.items():
     for subject, grade in info['subjects'].items():
         print(f"  {subject}: {grade}")
     print("-" * 30)
+
+# Автор: Могильний Дмитро (третій студент)
+# Створено функцію обчислення середнього балу кожного студента та виведення списку.
+
+def calculate_average_grades(students):
+    """
+    Обчислює середній бал кожного студента.
+    :param students: словник студентів
+    :return: словник {ПІБ: середній бал}
+    """
+    averages = {}
+    for sid, info in students.items():
+        grades = info["subjects"].values()
+        avg = sum(grades) / len(grades)
+        averages[info["name"]] = round(avg, 2)
+    return averages
+
+# Виклик функції середнього балу
+print("\nСередній бал кожного студента:\n")
+averages = calculate_average_grades(students)
+for name, avg in averages.items():
+    print(f"{name}: {avg}")
